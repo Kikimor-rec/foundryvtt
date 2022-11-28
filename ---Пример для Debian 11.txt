@@ -16,7 +16,7 @@ adduser shkrebtsov sudo
 Перезагружаемся
 reboot
 
-Логинимся по ssh
+Логинимся от нового пользователя по ssh
 
 --------
 Вот здесь должна быть ебала с авторизацией по ключу
@@ -57,13 +57,18 @@ sudo mkdir -p /srv/foundryvtt/{foundryvtt,foundrydata}
 
 
 Скачиваем и распаковываем foundryvtt/ Выбираем вариант для Node.JS
-$ curl 'Вставить ссылку' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -o foundryvtt.zip
+Устанавливаем curl
+sudo apt install curl 
+
+curl 'Вставить ссылку' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -o foundryvtt.zip
 sudo cp foundryvtt.zip /srv/foundryvtt/foundryvtt/
 cd /srv/foundryvtt/foundryvtt
 sudo unzip foundryvtt.zip 
 
+
+
 Запускаем приложение и проверяем что оно работает
-sudo node /srv/foundryvtt/foundryvtt/resources/app/main.js  -dataPath=/srv/foundryvtt/foundrydata
+sudo node /srv/foundryvtt/foundryvtt/resources/app/main.js  --dataPath=/srv/foundryvtt/foundrydata
 Убиваем процесс
 Ctrl+c
 
